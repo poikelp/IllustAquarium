@@ -10,37 +10,45 @@ $(window).on("load", function(){
     ctx = canvas.getContext("2d");
     rect = canvas.getBoundingClientRect();
 
-    color = $("#color").val();
+    color = GetColorCode($("#color").val());
+    radius = $("#radius").val();
 
     setInterval(Update, 1);
 })
 
 function Update(){
-    $("#color").on("cange", function(){
-        color = $("#color").val();
-    })
-
-    $("#radius").on("change", function(){
-        radius = $("#radius").val();
-    })
+    color = GetColorCode($("#color").val());
+    radius = $("#radius").val();
 
     $("#canvas").mousemove(function(e){
         mouse.x = e.clentX - rect.left;
         mouse.y = e.clentY - rect.right;
-
-        console.log(mouse);
     })
 
     $("#canvas").mousedown(function(e){
-        draw(e);
+        Draw(e);
     })
 
-    function draw (e) {
-        ctx.beginPath();
-        ctx.fillStyle = color
-    }
-
-    $("#canvas").click(function(e){
-        console.log(color);
-    })
 }
+
+function GetColorCode (code){
+    var red   = parseInt(code.substring(1,3), 16);
+    var green = parseInt(code.substring(3,5), 16);
+    var blue  = parseInt(code.substring(5,7), 16);
+    return {r:red, g:green, b:blue};
+}
+
+function Draw (e) {
+    ctx.beginPath();
+    ctx.fillStyle = "rgb(color.r, color.g, color.b)";
+    ctx.arc(mouse.x, mouse.y, radius, 0, Math.PI*2, true);
+    ctx.fill();
+}
+
+$("#color").on("cange", function(){
+    color = GetColorCode($("#color").val());
+})
+
+$("#radius").on("change", function(){
+    radius = $("#radius").val();
+})
