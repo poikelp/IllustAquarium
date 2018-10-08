@@ -11,23 +11,36 @@ $(window).on("load", function(){
     rect = canvas.getBoundingClientRect();
 
     color = $("#color").val();
+
+    setInterval(Update, 1);
 })
 
+function Update(){
+    $("#color").on("cange", function(){
+        color = $("#color").val();
+    })
 
-$("#color").on("cange", function(){
-    color = $("#color").val();
-})
+    $("#radius").on("change", function(){
+        radius = $("#radius").val();
+    })
 
-$("#radius").on("change", function(){
-    radius = $("#radius").val();
-})
+    $("#canvas").mousemove(function(e){
+        mouse.x = e.clentX - rect.left;
+        mouse.y = e.clentY - rect.right;
 
+        console.log(mouse);
+    })
 
-$("#canvas").mousemove(function(e){
-    mouse.x = e.clentX - rect.left;
-    mouse.y = e.clentY - rect.right;
-})
+    $("#canvas").mousedown(function(e){
+        draw(e);
+    })
 
-$("#canvas").mousedown(function(e){
+    function draw (e) {
+        ctx.beginPath();
+        ctx.fillStyle = color
+    }
 
-})
+    $("#canvas").click(function(e){
+        console.log(color);
+    })
+}
