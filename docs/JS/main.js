@@ -10,14 +10,14 @@ $(window).on("load", function(){
     ctx = canvas.getContext("2d");
     rect = canvas.getBoundingClientRect();
 
-    color = GetColorCode($("#color").val());
+    color =$("#color").val();
     radius = $("#radius").val();
 
     setInterval(Update, 1);
 })
 
 function Update(){
-    color = GetColorCode($("#color").val());
+    //color = GetColorCode($("#color").val());
     radius = $("#radius").val();
 
     $("#canvas").mousemove(function(e){
@@ -25,8 +25,8 @@ function Update(){
         mouse.y = e.clentY - rect.right;
     })
 
-    $("#canvas").mousedown(function(e){
-        Draw(e);
+    $("#canvas").mousedown(function(){
+        Draw();
     })
 
 }
@@ -38,17 +38,9 @@ function GetColorCode (code){
     return {r:red, g:green, b:blue};
 }
 
-function Draw (e) {
+function Draw () {
     ctx.beginPath();
-    ctx.fillStyle = "rgb(color.r, color.g, color.b)";
+    ctx.fillStyle = $("#color").val();
     ctx.arc(mouse.x, mouse.y, radius, 0, Math.PI*2, true);
     ctx.fill();
 }
-
-$("#color").on("cange", function(){
-    color = GetColorCode($("#color").val());
-})
-
-$("#radius").on("change", function(){
-    radius = $("#radius").val();
-})
