@@ -21,8 +21,8 @@ function Update(){
     radius = $("#radius").val();
 
     $("#canvas").mousemove(function(e){
-        mouse.x = e.clentX - rect.left;
-        mouse.y = e.clentY - rect.right;
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
     })
 
     $("#canvas").mousedown(function(){
