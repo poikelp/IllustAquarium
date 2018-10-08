@@ -4,6 +4,7 @@ var rect;
 var mouse = {x:0, y:0};
 var color;
 var radius;
+var isDrawing = false;
 
 $(window).on("load", function(){
     canvas = $("#canvas")[0];
@@ -20,15 +21,16 @@ function Update(){
     //color = GetColorCode($("#color").val());
     radius = $("#radius").val();
 
-    $("#canvas").mousemove(function(e){
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-    })
-
     $("#canvas").mousedown(function(){
-        Draw();
+        isDrawing = true;
+    })
+    $("#canvas").mouseup(function(){
+        isDrawing = false;
     })
 
+    if(isDrawing){
+        Draw();
+    }
 }
 
 function GetColorCode (code){
@@ -38,7 +40,16 @@ function GetColorCode (code){
     return {r:red, g:green, b:blue};
 }
 
+function GetMousePos(){
+    $("#canvas").mousemove(function(e){
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    })
+}
+
 function Draw () {
+    GetMousePos();
+
     ctx.beginPath();
     ctx.fillStyle = $("#color").val();
     ctx.arc(mouse.x, mouse.y, radius, 0, Math.PI*2, true);
