@@ -17,11 +17,8 @@ $("#color").on("cange", function(){
     color = $("#color").val();
 })
 
-function getMousePos(){
-    canvas.addEventListener("mousemove", function(e){
-    
-        mouse.x = e.clentX - rect.left;
-        mouse.y = e.clentY - rect.right;
 
-    })
-}
+$("#canvas").mousemove(function(e){
+    mouse.x = e.clentX - rect.left;
+    mouse.y = e.clentY - rect.right;
+})
