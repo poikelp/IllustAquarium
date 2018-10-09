@@ -8,10 +8,18 @@ function getCanvasPng(){
 
 function Upload(){
     var date = new Date();
-    var filename = "images/" + date.toString() + ".png";
+    var filename = date.toString() + ".png";
+    var fullpath = "images/" + filename;
+    var file = getCanvasPng();
 
-    var storageRef = firebase.storage().ref(filename);
-    storageRef.put(getCanvasPng()).then(function(){
+    console.log(file);
+
+
+    var storageRef = firebase.storage().ref();
+    var mountainsRef = storageRef.child(filename);
+    var mountainImagesRef = storageRef.child(fullpath);
+
+    storageRef.put(file).then(function(snapshot){
         console.log("hoge");
     });
 }
