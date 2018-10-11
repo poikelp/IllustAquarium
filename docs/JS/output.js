@@ -23,7 +23,7 @@ function Upload(){
     canvas.toBlob(function(blob){
         var image = new Image();
         image.src = blob;
-        storageRef.put(file);
+        mountainImagesRef.put(blob);
     });
     // return image;
 
