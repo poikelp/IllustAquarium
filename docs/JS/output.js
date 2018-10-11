@@ -2,10 +2,6 @@ $("#output").on("click", function(){
     Upload();
 })
 
-function getCanvasPng(){
-    
-    
-}
 
 function Upload(){
     var date = new Date();
@@ -16,16 +12,18 @@ function Upload(){
     // console.log(file);
 
     var storageRef = firebase.storage().ref();
-    var mountainsRef = storageRef.child(filename);
+    var mountainsRef = storageRef.child("images");
     var mountainImagesRef = storageRef.child(fullpath);
 
     var canvas = $("#canvas").get(0);
+
+    var file = new Blob;
     canvas.toBlob(function(blob){
-        var image = new Image();
-        image.src = blob;
-        mountainImagesRef.put(blob);
+        // file.src = URL.createObjectURL(blob);
+        file = blob;
     });
-    // return image;
+
+    mountainImagesRef.put(file);
 
 
     
