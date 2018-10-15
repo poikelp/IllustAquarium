@@ -27,7 +27,7 @@ function Upload(){
     //     mountainImagesRef.put(file);
 
     // },"image/png");
-
+    
     var type = "image/png";
     var dataurl = canvas.toDataURL(type);
     // var bin = btoa(dataurl.split(',')[1]);
@@ -38,10 +38,12 @@ function Upload(){
     }
     var file = new Blob([buffer.buffer], {type: type});
 
-    mountainImagesRef.put(file);
-
-
-    
+    $.when(
+        mountainImagesRef.put(file)
+    ).done(function(){
+        alert("アップロード完了！");
+        location.reload();
+    });
 
     
 }
