@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "3210352419",
+    "firebase_url": "https://illustaquarim.firebaseio.com",
+    "project_id": "illustaquarim",
+    "storage_bucket": "illustaquarim.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3210352419:android:0a2d90f17e9eb90d",
+        "android_client_info": {
+          "package_name": "com.poikelp.Illustaquarium"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3210352419-3fcedv3rtq8pbd1s8d8ilns0uj7ntal1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_lT_nz7GJvzP-ZFZPuaTsw7VxqhEnbEY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
